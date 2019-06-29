@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+
+<div class="layui-input-inline">
+    <input type="text" autocomplete="off" placeholder="用户名" id="s_userName" style="width:200px;margin:5px" value="" class="layui-input" />
+</div>
+<div class="layui-input-inline">
+    <button class="layui-btn" lay-submit="" id="search">搜索</button>
+    <button class="layui-btn" lay-submit="" id="add_user">注册</button>
+</div>
+<table id="demo" lay-filter="test"></table>
+<script>
+    layui.use(['table','layer'], function () {
+        var table = layui.table;
+        var layer = layui.layer;
+        var $ = layui.$;
+        table.render({
+            elem: '#demo',
+            url: '@Url.Action("GetUerList","Mall")',
+            page: true,
+            cols: [[
+                { field: 'UserId', title: 'ID', sort: true, fixed: 'left' },
+                { field: 'UserName', title: '用户名' },
+                {
+                    field: 'Sex', title: '性别', sort: true, templet: function (d) {
+                        return d.Sex == '0' ? '女' : '男';
+                    }
+                }
+            ]]
+        });
+        $('#search').on('click', function () {
+            table.reload('demo',
+                {
+                    where: {
+                        userName:$('#s_userName').val()
+                    }
+                }
+            )
+        })
+        $('#add_user').on('click', function () {
+            layer.open({
+  type: 2,
+                content: '@Url.Action("Add","Mall")',
+                area: ['900px', '700px'],
+                maxmin: true
+});
+        })
+    })
+</script>
