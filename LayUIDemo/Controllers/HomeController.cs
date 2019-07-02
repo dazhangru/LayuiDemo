@@ -22,7 +22,7 @@ namespace LayUIDemo.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = " page.";
 
             return View();
         }
