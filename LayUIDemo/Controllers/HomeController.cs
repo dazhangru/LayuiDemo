@@ -10,14 +10,12 @@ namespace LayUIDemo.Controllers
     {
         public ActionResult Index()
         {
-            //11111
             return View();
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "";
-            //22222
             return View();
         }
 
