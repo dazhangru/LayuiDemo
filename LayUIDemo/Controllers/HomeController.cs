@@ -15,7 +15,7 @@ namespace LayUIDemo.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "";
+            ViewBag.Message = "bbb";
             return View();
         }
 
